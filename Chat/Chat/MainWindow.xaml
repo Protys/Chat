@@ -1,0 +1,20 @@
+﻿<Window x:Class="Chat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chat"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="378.941" Width="694.608" Loaded="Window_Loaded">
+    <Grid>
+        <Button x:Name="btn_send" Content="Send" HorizontalAlignment="Left" Margin="629,315,0,0" VerticalAlignment="Top" Width="48" Height="23" RenderTransformOrigin="-2.459,0.13" Click="btn_send_Click" TabIndex="4"/>
+        <TextBox x:Name="txb_send" HorizontalAlignment="Left" Height="23" Margin="10,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="614" KeyDown="txb_send_KeyDown" TabIndex="3"/>
+        <TextBox x:Name="txb_readMessages" HorizontalAlignment="Left" Height="272" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="518" IsReadOnly="True" AutomationProperties.Name="txb_readMessages">
+        </TextBox>
+        <ListBox x:Name="lxb_rooms" Height="272" Margin="533,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144" MouseDoubleClick="lxb_rooms_MouseDoubleClick" TabIndex="1"/>
+        <Label x:Name="lbl_selected" Content="" HorizontalAlignment="Left" Margin="585,287,0,0" VerticalAlignment="Top" Width="92"/>
+        <Label x:Name="lbl_activeRoom" Content="Active room:" HorizontalAlignment="Left" Margin="496,287,0,0" VerticalAlignment="Top" Width="84"/>
+        <TextBox x:Name="txb_username" HorizontalAlignment="Left" Height="23" Margin="10,287,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="481" TextChanged="txb_username_TextChanged" TabIndex="2"/>
+
+    </Grid>
+</Window>
