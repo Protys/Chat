@@ -50,6 +50,7 @@ namespace Chat
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this._chat.Start();
+            this.txb_readMessages.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
         }
 
         private void GetText(string result, string name)
@@ -59,6 +60,7 @@ namespace Chat
                 Dispatcher.Invoke(delegate ()
                 {
                     this.txb_readMessages.Text = result;
+                    this.txb_readMessages.ScrollToEnd();
                 });
             }
         }

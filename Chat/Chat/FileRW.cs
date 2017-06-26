@@ -11,43 +11,44 @@ namespace Chat
     {
         public string ReadAll(string path)
         {
+            bool written = false;
             string result = "";
-            try
+            while (!written)
             {
-                List<string> lines = new List<string>();
-                StreamReader reader = new StreamReader(path, Encoding.Unicode);
-                while (!reader.EndOfStream)
+                try
                 {
-                    lines.Add(reader.ReadLine());
+                    List<string> lines = new List<string>();
+                    StreamReader reader = new StreamReader(path, Encoding.Unicode);
+                    result = reader.ReadToEnd();
+                    reader.Close();
+                    written = true;
                 }
-                reader.Close();
-
-                for (int i = lines.Count - 1; i >= 0; i--)
+                catch (Exception e)
                 {
-                    result += $"{lines[i]}\n\n";
+                    Console.WriteLine($"{e.Message}");
+                    Console.WriteLine($"Reader is occupied!");
                 }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{e.Message}");
-                Console.WriteLine($"Reader is occupied!");
             }
             return result;
         }
 
         public void WriteAll(string path, string message)
         {
-            try
+            bool written = false;
+            while (!written)
             {
-                StreamWriter writer = new StreamWriter(path, true, Encoding.Unicode);
-                writer.WriteLine($"[{DateTime.Now.ToString("HH:mm:ss")}]<{UserInfo.User.Name}> {message}");
-                writer.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{e.Message}");
-                Console.WriteLine($"Writer is occupied!");
+                try
+                {
+                    StreamWriter writer = new StreamWriter(path, true, Encoding.Unicode);
+                    writer.WriteLine($"[{DateTime.Now.ToString("dd.MM HH:mm:ss")}]<{UserInfo.User.Name}>: {message}");
+                    writer.Close();
+                    written = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{e.Message}");
+                    Console.WriteLine($"Writer is occupied!");
+                }
             }
         }
     }
